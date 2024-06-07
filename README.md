@@ -4,15 +4,23 @@
 
 # Integrantes
 
-• Etchetorena
+• Etchetorena - tester
 
-• Gorgerino
+• Gorgerino - diseño
 
-• Ibalo
+• Ibalo-dba
 
-• Mieres
+• Mieres - develop
 
-• Morano
+• Morano - pm
+
+# Sprint 2 
+
+* Pantalla inicio 
+* registro de nombre de usuario 
+* DBA registro de nombre 
+* redireccionamiento de botones en la pagina principal 
+
 
 Correccion de Issues
 
