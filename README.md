@@ -4,25 +4,19 @@
 
 # Integrantes
 
-• Etchetorena - diseño
+• Etchetorena - UX-UI
 
-• Gorgerino - develop
+• Gorgerino - Developer
 
-• Ibalo-dba
+• Ibalo- DBA
 
-• Mieres - tester
+• Mieres - Tester
 
-• Morano - pm
+• Morano - PM
 
-# Sprint 2 
+# Sprint 3
 
-* Pantalla inicio 
-* registro de nombre de usuario 
-* DBA registro de nombre 
-* redireccionamiento de botones en la pagina principal 
-
-
-Correccion de Issues
-
-* Los nombres no orientan de lo que se va a trabajar, tienen que ser mejores
-* No hay ninguna descripccion de lo que se va a trabajar en cada tarea, si el nombre no se entiende y no hay descripcion es imposible saber lo que se va a hacer, tiene que ser descriptiva la tarea para saber resolverla correctamente  
+* Pop up posterior a la pantalla de inicio que pida los datos del usuario
+* Pantalla inicio
+* DBA conexion de base de datos (firebase) al react native 
+* Creacion de cada uno los botones de la pagina principal 
