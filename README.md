@@ -4,13 +4,13 @@
 
 # Integrantes
 
-• Etchetorena - tester
+• Etchetorena - diseño
 
-• Gorgerino - diseño
+• Gorgerino - develop
 
 • Ibalo-dba
 
-• Mieres - develop
+• Mieres - tester
 
 • Morano - pm
 
