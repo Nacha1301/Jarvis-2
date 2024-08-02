@@ -4,19 +4,19 @@
 
 # Integrantes
 
-• Etchetorena - UX-UI
+• Etchetorena - DBA
 
-• Gorgerino - Developer
+• Gorgerino - PM y UX-UI
 
-• Ibalo- DBA
+• Ibalo- Tester
 
-• Mieres - Tester
+• Mieres - DBA
 
-• Morano - PM
+• Morano - Developer
 
-# Sprint 3
+# Sprint 4
 
 * Pop up posterior a la pantalla de inicio que pida los datos del usuario
-* Pantalla inicio
+* Creacion de las pantallas siguientes de los botones
 * DBA conexion de base de datos (firebase) al react native 
-* Creacion de cada uno los botones de la pagina principal 
+* Realizar los casos de pruebas, los casos de prueba QA, realizar un testeo de la aplicacion y levantar un reporte con los errores.
