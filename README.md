@@ -14,9 +14,9 @@
 
 • Morano - Developer
 
-# Sprint 4
+# Sprint 5
 
-* Pop up posterior a la pantalla de inicio que pida los datos del usuario
-* Creacion de las pantallas siguientes de los botones
-* DBA conexion de base de datos (firebase) al react native 
-* Realizar los casos de pruebas, los casos de prueba QA, realizar un testeo de la aplicacion y levantar un reporte con los errores.
+-Terminar con las pantallas de los botones.
+-Unir las pantallas con su determinado botón para su redireccionamiento.
+-Comprobar que la base de datos almacene los datos y los guarde.
+-Hacer los ultimos ajustes del diseño de las pantallas para que concuerden con las diseñadas previamente.
