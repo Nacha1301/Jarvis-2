@@ -1,4 +1,4 @@
 ### Pantallas
-· Cuenta de Expo: \n
-nachabombacha
-Nacha1301_
+· Cuenta de Expo:  
+nachabombacha  
+Nacha1301_  
