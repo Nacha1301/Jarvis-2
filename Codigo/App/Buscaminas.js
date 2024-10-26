@@ -271,25 +271,19 @@ const App = ({ navigation }) => {
       </View>
 
       {isGameOver && (
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={isGameOver}>
+        <Modal animationType="slide" transparent={true} visible={isGameOver}>
           <View style={styles.gameOverContainer}>
             <View style={styles.gameOverModal}>
               <Text style={styles.gameOverText}>¡Derrota!</Text>
               <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress={resetGame}>
-                  <Text style={styles.buttonText}>Jugar de nuevo</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.button}
+                <Button title="Jugar de nuevo" onPress={resetGame} />
+                <Button
+                  title="Volver a Casa"
                   onPress={() => {
-                    setIsGameOver(false);
-                    navigation.navigate('Home');
-                  }}>
-                  <Text style={styles.buttonText}>Volver a Casa</Text>
-                </TouchableOpacity>
+                    setIsGameOver(false); 
+                    navigation.navigate('Home'); 
+                  }}
+                />
               </View>
             </View>
           </View>
@@ -297,26 +291,20 @@ const App = ({ navigation }) => {
       )}
 
       {isVictory && (
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={isVictory}>
+        <Modal animationType="slide" transparent={true} visible={isVictory}>
           <View style={styles.gameOverContainer}>
             <View style={styles.gameOverModal}>
               <Text style={styles.gameOverText}>¡Victoria!</Text>
               <Text style={styles.gameOverText2}>Tiempo: {timer}</Text>
               <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.button} onPress={resetGame}>
-                  <Text style={styles.buttonText}>Jugar de nuevo</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.button}
+                <Button title="Jugar de nuevo" onPress={resetGame} />
+                <Button
+                  title="Volver a Casa"
                   onPress={() => {
-                    setIsVictory(false);
-                    navigation.navigate('Home');
-                  }}>
-                  <Text style={styles.buttonText}>Volver a Casa</Text>
-                </TouchableOpacity>
+                    setIsVictory(false); 
+                    navigation.navigate('Home'); 
+                  }}
+                />
               </View>
             </View>
           </View>
@@ -389,27 +377,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
   },
+  buttonContainer: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: '80%',
+  marginTop: 20,
+  gap: 10,
+  },
   gameOverText2: {
     fontSize: 20,
     marginBottom: 20,
-  },
-  buttonContainer: {
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  width: '80%',
-  marginTop: 20,
-  marginRight: 45,
-  },
-  button: {
-    backgroundColor: '#2196F3',
-    padding: 10,
-    borderRadius: 5,
-    marginHorizontal: 10,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
-    textAlign: 'center',
   },
 });
 
