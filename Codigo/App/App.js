@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, Modal, TextInput, Animated } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, Modal, TextInput, Animated, Alert, Linking, Button} from 'react-native';
 import * as firebase from 'firebase';
 import 'firebase/database';
 import { NavigationContainer } from '@react-navigation/native';
@@ -14,15 +14,15 @@ import Memotest from './Memotest';
 import JuegosSinConexion from './JuegosSinConexion';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
 const firebaseConfig = {
-  apiKey: "AIzaSyCCsdDdWwUEwtYTU9HNf5GQW8Hkf2NasLU",
-  authDomain: "ultron-db141.firebaseapp.com",
-  projectId: "ultron-db141",
-  storageBucket: "ultron-db141.appspot.com",
-  messagingSenderId: "151952143708",
-  appId: "1:151952143708:web:1404c327f12bbec0747d99",
-  measurementId: "G-R15LNPTJHT"
+  apiKey: "AIzaSyBjdSByv2slcL-XFYQhdjs3hNEkjjTfmfw",
+  authDomain: "ultron-5c2bf.firebaseapp.com",
+  databaseURL: "https://ultron-5c2bf-default-rtdb.firebaseio.com",
+  projectId: "ultron-5c2bf",
+  storageBucket: "ultron-5c2bf.appspot.com",
+  messagingSenderId: "99416634310",
+  appId: "1:99416634310:web:d5c6ebe950e1992988b8c7",
+  measurementId: "G-QRJ2ZNXWKP"
 };
 
 if (!firebase.apps.length) {
@@ -103,6 +103,20 @@ function HomeScreen({ navigation }) {
     setModalVisible(true);
   }, []);
 
+  const handleOpenPDF = async () => {
+    const remoteUri = 'https://drive.google.com/uc?id=1thEhMGmDUA_S69AVyMaZuQESBiR3O9Wn';
+    try {
+      const supported = await Linking.canOpenURL(remoteUri);
+      if (supported) {
+        await Linking.openURL(remoteUri);
+      } else {
+        Alert.alert();
+      }
+    } catch (error) {
+      console.error();
+    }
+  };
+
   const toggleMenu = () => {
     const toValue = isMenuVisible ? -300 : 0;
     const opacityValue = isMenuVisible ? 0 : 0.5;
@@ -149,6 +163,13 @@ function HomeScreen({ navigation }) {
           />
           <Text></Text>
           <Text style={styles.userName}>{name}</Text>
+        </View>
+        <View style={styles.manualContainer}>
+          <Text style={styles.manualDeUsuario}>Escanea el QR o haz click en el para descargar el manual de usuario!</Text>
+          <Text></Text>
+          <TouchableOpacity onPress={handleOpenPDF}>
+            <Image style={styles.qrImage} source={require('./assets/qr.jpg')} />
+          </TouchableOpacity>
         </View>
         <View style={styles.themeSection}>
           <Text style={styles.themeLabel}>Temas:</Text>
@@ -453,6 +474,22 @@ onPress={handleNotesPress}>
        right: 0,
        backgroundColor: 'rgba(0, 0, 0, 0.5)',
        zIndex: 999,
+     },
+      manualContainer: {
+        flex: 1,
+        alignItems: 'center',
+        marginTop: 'center',
+        justifyContent: 'center',
+     },
+      manualDeUsuario: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        marginBottom: 10,
+     },
+      qrImage: {
+        width: 200,
+        height: 200,
+        alignSelf: 'center',
      },
      disabledButton: {
        backgroundColor: '#cccccc',
