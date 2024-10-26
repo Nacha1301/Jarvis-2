@@ -60,11 +60,10 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Pressable style={styles.trashIcon} onPress={() => setModalVisible(true)}>
-        <Ionicons name="trash-outline" size={37} color="black" />
-      </Pressable>
-
       <View style={styles.rectContainer}>
+        <Pressable style={styles.trashIcon} onPress={() => setModalVisible(true)}>
+          <Ionicons name="trash-outline" size={35} color="black" />
+        </Pressable>
         <ScrollView contentContainerStyle={formattedData ? styles.scrollViewTop : styles.scrollViewCenter}>
           <Text style={formattedData ? styles.dataText : styles.emptyText}>
             {formattedData || "Historial Vacío"}
@@ -105,8 +104,8 @@ const styles = StyleSheet.create({
   },
   trashIcon: {
     position: 'absolute',
-    top: 130,
-    right: 50,
+    top: 10,
+    right: 10,
     zIndex: 1,
   },
   rectContainer: {
@@ -125,6 +124,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.23,
     shadowRadius: 2.62,
     elevation: 4,
+    position: 'relative',
   },
   scrollViewTop: {
     flexGrow: 1,
