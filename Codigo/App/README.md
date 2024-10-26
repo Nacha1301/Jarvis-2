@@ -1,4 +1,4 @@
 ### Pantallas
-· Cuenta de Expo:  
-nachabombacha  
-Nacha1301_  
+# Cuenta de Expo:  
+User: nachabombacha  
+Pw: Nacha1301_  
