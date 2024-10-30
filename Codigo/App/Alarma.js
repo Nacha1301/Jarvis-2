@@ -1,105 +1,23 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState, useRef } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Pressable, Switch, FlatList, Modal, Button, Vibration } from "react-native";
-import { useEffect, useState, useRef } from "react";
-import { LogBox } from "react-native";
+import { StyleSheet, Text, View, Pressable, Switch, FlatList, Modal, Button } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Picker } from '@react-native-picker/picker';
+import { useAlarmContext } from './AlarmContext';
 
-LogBox.ignoreLogs(["new NativeEventEmitter"]);
-LogBox.ignoreAllLogs();
-
-const ONE_SECOND_IN_MS = 1000;
-const VIBRATION_PATTERN = [2 * ONE_SECOND_IN_MS, ONE_SECOND_IN_MS, 2 * ONE_SECOND_IN_MS, ONE_SECOND_IN_MS, 2 * ONE_SECOND_IN_MS];
-const VIBRATION_DURATION_MS = 10 * 1000;
-
-export default function App() {
-  const [alarms, setAlarms] = useState([]);
+export default function AlarmaScreen() {
+  const { alarms, addAlarm, deleteAllAlarms } = useAlarmContext();
   const [modalVisible, setModalVisible] = useState(false);
   const [modalMenuVisible, setModalMenuVisible] = useState(false);
   const [selectedHour, setSelectedHour] = useState("00");
   const [selectedMinute, setSelectedMinute] = useState("00");
-  const alarmCheckTimeoutRef = useRef(null);
-
-  useEffect(() => {
-    const loadAlarms = async () => {
-      const storedAlarms = await AsyncStorage.getItem('alarms');
-      if (storedAlarms) {
-        setAlarms(JSON.parse(storedAlarms));
-      }
-    };
-
-    loadAlarms();
-  }, []);
-
-  useEffect(() => {
-    const saveAlarms = async () => {
-      await AsyncStorage.setItem('alarms', JSON.stringify(alarms));
-    };
-
-    saveAlarms();
-  }, [alarms]);
-
-  useEffect(() => {
-    const checkAlarms = () => {
-      const currentTime = new Date();
-      const currentHour = String(currentTime.getHours()).padStart(2, '0');
-      const currentMinute = String(currentTime.getMinutes()).padStart(2, '0');
-      const currentSecond = currentTime.getSeconds();
-      const currentTimeFormatted = `${currentHour}:${currentMinute}`;
-
-      alarms.forEach((alarm, index) => {
-        if (alarm.enabled && alarm.time === currentTimeFormatted) {
-          Vibration.vibrate(VIBRATION_PATTERN);
-          setTimeout(() => {
-            Vibration.cancel();
-          }, VIBRATION_DURATION_MS);
-          const updatedAlarms = [...alarms];
-          updatedAlarms[index] = { ...alarm, enabled: false };
-          setAlarms(updatedAlarms);
-        }
-      });
-
-      const timeToNextMinute = (60 - currentSecond) * 1000;
-      alarmCheckTimeoutRef.current = setTimeout(checkAlarms, timeToNextMinute);
-    };
-
-    checkAlarms();
-
-    return () => {
-      clearTimeout(alarmCheckTimeoutRef.current);
-    };
-  }, [alarms]);
-
-  const toggleAlarm = (id) => {
-    const updatedAlarms = alarms.map((alarm) => {
-      if (alarm.id === id) {
-        return { ...alarm, enabled: !alarm.enabled };
-      }
-      return alarm;
-    });
-    setAlarms(updatedAlarms);
-  };
 
   const handleAddAlarm = () => {
     const timeInput = `${selectedHour}:${selectedMinute}`;
-    const newAlarm = {
-      id: Math.random().toString(),
-      time: timeInput,
-      enabled: true,
-    };
-    setAlarms([...alarms, newAlarm]);
+    addAlarm(timeInput);
     setModalVisible(false);
     setSelectedHour("00");
     setSelectedMinute("00");
-  };
-
-  const deleteAllAlarms = async () => {
-    Vibration.cancel();
-    clearTimeout(alarmCheckTimeoutRef.current);
-    setAlarms([]);
-    await AsyncStorage.removeItem('alarms');
-    setModalMenuVisible(false);
   };
 
   const renderItem = ({ item }) => (
@@ -114,8 +32,15 @@ export default function App() {
     </View>
   );
 
-  const hours = Array.from({ length: 24 }, (_, i) => String(i).padStart(2, "0"));
-  const minutes = Array.from({ length: 60 }, (_, i) => String(i).padStart(2, "0"));
+const toggleAlarm = (id) => {
+    const updatedAlarms = alarms.map((alarm) => {
+      if (alarm.id === id) {
+        return { ...alarm, enabled: !alarm.enabled };
+      }
+      return alarm;
+    });
+    setAlarms(updatedAlarms);
+  };
 
   return (
     <View style={styles.container}>
@@ -127,7 +52,7 @@ export default function App() {
           <Ionicons name="ellipsis-vertical" size={37} color="black" />
         </Pressable>
       </View>
-      <Text></Text><Text></Text>
+
       <FlatList
         data={alarms}
         renderItem={renderItem}
@@ -150,7 +75,7 @@ export default function App() {
                 style={styles.picker}
                 onValueChange={(itemValue) => setSelectedHour(itemValue)}
               >
-                {hours.map((hour) => (
+                {Array.from({ length: 24 }, (_, i) => String(i).padStart(2, "0")).map((hour) => (
                   <Picker.Item key={hour} label={hour} value={hour} />
                 ))}
               </Picker>
@@ -160,7 +85,7 @@ export default function App() {
                 style={styles.picker}
                 onValueChange={(itemValue) => setSelectedMinute(itemValue)}
               >
-                {minutes.map((minute) => (
+                {Array.from({ length: 60 }, (_, i) => String(i).padStart(2, "0")).map((minute) => (
                   <Picker.Item key={minute} label={minute} value={minute} />
                 ))}
               </Picker>
