@@ -109,7 +109,7 @@ const toggleAlarm = (id) => {
             <Text style={styles.modalTitle}>¿Borrar todas las alarmas?</Text>
             <View style={styles.buttonContainer}>
               <Button title="Cancelar" color="red" onPress={() => setModalMenuVisible(false)} />
-              <Button title="Aceptar" onPress={deleteAllAlarms} />
+              <Button title="Aceptar" onPress={() => { setModalMenuVisible(false); deleteAllAlarms(false);}} />
             </View>
           </View>
         </View>
