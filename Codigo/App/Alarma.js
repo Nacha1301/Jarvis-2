@@ -52,7 +52,7 @@ const toggleAlarm = (id) => {
           <Ionicons name="ellipsis-vertical" size={37} color="black" />
         </Pressable>
       </View>
-
+      <Text></Text><Text></Text>
       <FlatList
         data={alarms}
         renderItem={renderItem}
