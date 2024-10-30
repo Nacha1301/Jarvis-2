@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, Modal, TextInput, Animated, Alert, Linking, Button} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, Modal, TextInput, Animated, Alert, Linking, Button } from 'react-native';
 import * as firebase from 'firebase';
 import 'firebase/database';
 import { NavigationContainer } from '@react-navigation/native';
@@ -13,6 +13,7 @@ import Buscaminas from './Buscaminas';
 import Memotest from './Memotest';
 import JuegosSinConexion from './JuegosSinConexion';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AlarmProvider } from './AlarmContext';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBjdSByv2slcL-XFYQhdjs3hNEkjjTfmfw",
@@ -40,13 +41,13 @@ function HomeScreen({ navigation }) {
   const [overlayOpacity] = useState(new Animated.Value(0));
   const [selectedThemeColor, setSelectedThemeColor] = useState('#007bff');
 
-   const avatarSources = {
+  const avatarSources = {
     avatar1: require('./assets/1.jpeg'),
     avatar2: require('./assets/2.jpeg'),
     avatar3: require('./assets/3.png'),
   };
 
-   const handleDeleteDatabase = () => {
+  const handleDeleteDatabase = () => {
     database.ref('BADAGral').remove();
     AsyncStorage.removeItem('alarms');
     AsyncStorage.removeItem('notes');
@@ -97,7 +98,6 @@ function HomeScreen({ navigation }) {
     });
     navigation.navigate('JuegosSinConexion', { themeColor: selectedThemeColor });
   };
-
 
   useEffect(() => {
     setModalVisible(true);
@@ -202,33 +202,23 @@ function HomeScreen({ navigation }) {
         <Text style={styles.headerText}>¡Hola, Soy Ultron!</Text>
         <Text style={styles.subHeaderText}>¿En qué puedo ayudarte hoy?</Text>
         <Text></Text>
-        <TouchableOpacity style={[styles.button, { backgroundColor: selectedThemeColor }]} 
-
-onPress={handleAlarmPress}>
+        <TouchableOpacity style={[styles.button, { backgroundColor: selectedThemeColor }]} onPress={handleAlarmPress}>
           <Text style={styles.buttonText}>Alarma</Text>
         </TouchableOpacity>
         <Text></Text>
-        <TouchableOpacity style={[styles.button, { backgroundColor: selectedThemeColor }]} 
-
-onPress={handleTraductorPress}>
+        <TouchableOpacity style={[styles.button, { backgroundColor: selectedThemeColor }]} onPress={handleTraductorPress}>
           <Text style={styles.buttonText}>Traductor</Text>
         </TouchableOpacity>
         <Text></Text>
-        <TouchableOpacity style={[styles.button, { backgroundColor: selectedThemeColor }]} 
-
-onPress={handleHistorialPress}>
+        <TouchableOpacity style={[styles.button, { backgroundColor: selectedThemeColor }]} onPress={handleHistorialPress}>
           <Text style={styles.buttonText}>Historial</Text>
         </TouchableOpacity>
         <Text></Text>
-        <TouchableOpacity style={[styles.button, { backgroundColor: selectedThemeColor }]} 
-
-onPress={handleGamesPress}>
+        <TouchableOpacity style={[styles.button, { backgroundColor: selectedThemeColor }]} onPress={handleGamesPress}>
           <Text style={styles.buttonText}>Juegos Sin Conexion</Text>
         </TouchableOpacity>
         <Text></Text>
-        <TouchableOpacity style={[styles.button, { backgroundColor: selectedThemeColor }]} 
-
-onPress={handleNotesPress}>
+        <TouchableOpacity style={[styles.button, { backgroundColor: selectedThemeColor }]} onPress={handleNotesPress}>
           <Text style={styles.buttonText}>Notas/Listas de Tareas</Text>
         </TouchableOpacity>
       </View>
@@ -283,21 +273,21 @@ onPress={handleNotesPress}>
                 (name === '' || selectedAvatar === null) && styles.disabledButton,
               ]}
               onPress={() => {
-                                   if (name && selectedAvatar) {
-                     handleDeleteDatabase();
-                     setModalVisible(!modalVisible);
-                   }
-                 }}
-                 disabled={name === '' || selectedAvatar === null}
-               >
-                 <Text style={styles.textStyle}>Aceptar</Text>
-               </TouchableOpacity>
-             </View>
-           </View>
-         </Modal>
-       </View>
-     );
-   }
+                if (name && selectedAvatar) {
+                  handleDeleteDatabase();
+                  setModalVisible(!modalVisible);
+                }
+              }}
+              disabled={name === '' || selectedAvatar === null}
+            >
+              <Text style={styles.textStyle}>Aceptar</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+    </View>
+  );
+}
 
    const styles = StyleSheet.create({
      container: {
@@ -496,18 +486,19 @@ onPress={handleNotesPress}>
      },
    });
 
-   const Stack = createStackNavigator();
+const Stack = createStackNavigator();
 
-   export default function App() {
-     return (
-       <NavigationContainer>
-         <Stack.Navigator>
-           <Stack.Screen
-             name="Home"
-             component={HomeScreen}
-             options={{ headerShown: false }}
-           />
-           <Stack.Screen
+export default function App() {
+  return (
+    <AlarmProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
             name="Notas"
             component={Notas}
             options={{
@@ -521,7 +512,7 @@ onPress={handleNotesPress}>
               ),
             }}
           />
-           <Stack.Screen
+          <Stack.Screen
             name="Historial"
             component={Historial}
             options={{
@@ -619,8 +610,8 @@ onPress={handleNotesPress}>
               ),
             }}
           />
-         </Stack.Navigator>
-       </NavigationContainer>
-     );
-   }
-
+        </Stack.Navigator>
+      </NavigationContainer>
+    </AlarmProvider>
+  );
+}
