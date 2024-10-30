@@ -13,7 +13,7 @@ import Buscaminas from './Buscaminas';
 import Memotest from './Memotest';
 import JuegosSinConexion from './JuegosSinConexion';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AlarmProvider } from './AlarmContext';
+import { AlarmProvider, useAlarmContext } from './AlarmContext';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBjdSByv2slcL-XFYQhdjs3hNEkjjTfmfw",
@@ -33,6 +33,7 @@ if (!firebase.apps.length) {
 const database = firebase.database();
 
 function HomeScreen({ navigation }) {
+  const {deleteAllAlarms} = useAlarmContext();
   const [modalVisible, setModalVisible] = useState(true);
   const [name, setName] = useState('');
   const [selectedAvatar, setSelectedAvatar] = useState(null);
@@ -49,7 +50,7 @@ function HomeScreen({ navigation }) {
 
   const handleDeleteDatabase = () => {
     database.ref('BADAGral').remove();
-    AsyncStorage.removeItem('alarms');
+    deleteAllAlarms();
     AsyncStorage.removeItem('notes');
     AsyncStorage.removeItem('@max_score');
   };
