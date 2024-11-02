@@ -13,12 +13,12 @@ export default function AlarmaScreen() {
   const [selectedMinute, setSelectedMinute] = useState("00");
 
   const handleAddAlarm = () => {
-    const timeInput = `${selectedHour}:${selectedMinute}`;
-    addAlarm(timeInput);
-    setModalVisible(false);
-    setSelectedHour("00");
-    setSelectedMinute("00");
-  };
+   const timeInput = `${selectedHour}:${selectedMinute}`;
+   addAlarm(timeInput);
+   setModalVisible(false);
+   setSelectedHour("00");
+   setSelectedMinute("00");
+};
 
   const renderItem = ({ item }) => (
     <View style={styles.alarmContainer}>
