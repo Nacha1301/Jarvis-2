@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { Vibration, Button, View, Text, TouchableOpacity, Animated } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AlarmContext = createContext();
 
@@ -81,8 +82,18 @@ export const AlarmProvider = ({ children }) => {
     await AsyncStorage.removeItem('alarms');
   };
 
+  const toggleAlarm = (id) => {
+    const updatedAlarms = alarms.map((alarm) => {
+      if (alarm.id === id) {
+        return { ...alarm, enabled: !alarm.enabled };
+      }
+      return alarm;
+    });
+    setAlarms(updatedAlarms);
+  };
+
   return (
-    <AlarmContext.Provider value={{ alarms, addAlarm, deleteAllAlarms, stopAlarm, isNotificationVisible }}>
+    <AlarmContext.Provider value={{ alarms, addAlarm, deleteAllAlarms, stopAlarm, isNotificationVisible, setAlarms, toggleAlarm }}>
       {children}
       {isNotificationVisible && (
         <Animated.View style={{
