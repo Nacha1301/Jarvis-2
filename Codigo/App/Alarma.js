@@ -1,36 +1,50 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Pressable, Switch, FlatList, Modal, Button } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Picker } from '@react-native-picker/picker';
 import { useAlarmContext } from './AlarmContext';
+import { Swipeable } from 'react-native-gesture-handler';
 
 export default function AlarmaScreen() {
-  const { alarms, addAlarm, deleteAllAlarms, toggleAlarm } = useAlarmContext();
+  const { alarms, addAlarm, deleteAllAlarms, deleteAlarm, toggleAlarm } = useAlarmContext();
   const [modalVisible, setModalVisible] = useState(false);
   const [modalMenuVisible, setModalMenuVisible] = useState(false);
   const [selectedHour, setSelectedHour] = useState("00");
   const [selectedMinute, setSelectedMinute] = useState("00");
 
   const handleAddAlarm = () => {
-   const timeInput = `${selectedHour}:${selectedMinute}`;
-   addAlarm(timeInput);
-   setModalVisible(false);
-   setSelectedHour("00");
-   setSelectedMinute("00");
-};
+    const timeInput = `${selectedHour}:${selectedMinute}`;
+    addAlarm(timeInput);
+    setModalVisible(false);
+    setSelectedHour("00");
+    setSelectedMinute("00");
+  };
 
-  const renderItem = ({ item }) => (
-    <View style={styles.alarmContainer}>
-      <Text style={styles.alarmTime}>{item.time}</Text>
-      <Switch
-        trackColor={{ false: "#767577", true: "#4CAF50" }}
-        thumbColor={item.enabled ? "#f4f3f4" : "#f4f3f4"}
-        onValueChange={() => toggleAlarm(item.id)}
-        value={item.enabled}
-      />
-    </View>
-  );
+  const renderItem = ({ item }) => {
+    const renderLeftActions = () => (
+      <View style={styles.deleteContainer}>
+        <Pressable onPress={() => deleteAlarm(item.id)} style={styles.deleteButton}>
+          <Ionicons name="trash-outline" size={24} color="white" />
+          <Text style={styles.deleteText}>Eliminar</Text>
+        </Pressable>
+      </View>
+    );
+
+    return (
+      <Swipeable renderLeftActions={renderLeftActions}>
+        <View style={styles.alarmContainer}>
+          <Text style={styles.alarmTime}>{item.time}</Text>
+          <Switch
+            trackColor={{ false: "#767577", true: "#4CAF50" }}
+            thumbColor={item.enabled ? "#f4f3f4" : "#f4f3f4"}
+            onValueChange={() => toggleAlarm(item.id)}
+            value={item.enabled}
+          />
+        </View>
+      </Swipeable>
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -87,7 +101,6 @@ export default function AlarmaScreen() {
           </View>
         </View>
       </Modal>
-
       <Modal
         animationType="fade"
         transparent={true}
@@ -99,7 +112,7 @@ export default function AlarmaScreen() {
             <Text style={styles.modalTitle}>¿Borrar todas las alarmas?</Text>
             <View style={styles.buttonContainer}>
               <Button title="Cancelar" color="red" onPress={() => setModalMenuVisible(false)} />
-              <Button title="Aceptar" onPress={() => { setModalMenuVisible(false); deleteAllAlarms(false);}} />
+              <Button title="Aceptar" onPress={() => { setModalMenuVisible(false); deleteAllAlarms(); }} />
             </View>
           </View>
         </View>
@@ -136,6 +149,25 @@ const styles = StyleSheet.create({
     width: "25%",
     marginTop: 5,
     marginLeft: '66%',
+  },
+  deleteContainer: {
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    backgroundColor: '#FF6961',
+    borderRadius: 30,
+    marginVertical: 10,
+    paddingHorizontal: 20,
+    marginRight: -15,
+    marginLeft: 22,
+  },
+  deleteButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  deleteText: {
+    color: 'white',
+    fontWeight: 'bold',
+    marginLeft: 5,
   },
   modalOverlay: {
     flex: 1,
