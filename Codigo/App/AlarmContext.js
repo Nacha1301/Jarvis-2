@@ -92,8 +92,15 @@ export const AlarmProvider = ({ children }) => {
     setAlarms(updatedAlarms);
   };
 
+  const deleteAlarm = async (id) => {
+    const updatedAlarms = alarms.filter(alarm => alarm.id !== id);
+    setAlarms(updatedAlarms);
+    await AsyncStorage.setItem('alarms', JSON.stringify(updatedAlarms));
+  };
+
+
   return (
-    <AlarmContext.Provider value={{ alarms, addAlarm, deleteAllAlarms, stopAlarm, isNotificationVisible, setAlarms, toggleAlarm }}>
+    <AlarmContext.Provider value={{ alarms, addAlarm, deleteAllAlarms, deleteAlarm, stopAlarm, isNotificationVisible, setAlarms, toggleAlarm }}>
       {children}
       {isNotificationVisible && (
         <Animated.View style={{
