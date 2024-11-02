@@ -90,7 +90,7 @@ export const AlarmProvider = ({ children }) => {
           top: '10%',
           left: 10,
           right: 10,
-          backgroundColor: '#FF6961', // Color rojo suave
+          backgroundColor: '#FF6961',
           paddingVertical: 15,
           paddingHorizontal: 20,
           borderRadius: 12,
