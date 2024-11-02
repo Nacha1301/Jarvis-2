@@ -6,7 +6,7 @@ import { Picker } from '@react-native-picker/picker';
 import { useAlarmContext } from './AlarmContext';
 
 export default function AlarmaScreen() {
-  const { alarms, addAlarm, deleteAllAlarms } = useAlarmContext();
+  const { alarms, addAlarm, deleteAllAlarms, toggleAlarm } = useAlarmContext();
   const [modalVisible, setModalVisible] = useState(false);
   const [modalMenuVisible, setModalMenuVisible] = useState(false);
   const [selectedHour, setSelectedHour] = useState("00");
@@ -31,16 +31,6 @@ export default function AlarmaScreen() {
       />
     </View>
   );
-
-const toggleAlarm = (id) => {
-    const updatedAlarms = alarms.map((alarm) => {
-      if (alarm.id === id) {
-        return { ...alarm, enabled: !alarm.enabled };
-      }
-      return alarm;
-    });
-    setAlarms(updatedAlarms);
-  };
 
   return (
     <View style={styles.container}>
