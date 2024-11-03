@@ -152,6 +152,8 @@ function HomeScreen({ navigation }) {
     tixiPutote();
   };
 
+  const [isFirstPress, setIsFirstPress] = useState(true);
+
   return (
     <View style={styles.container}>
       {isMenuVisible && (
@@ -292,7 +294,10 @@ function HomeScreen({ navigation }) {
               ]}
               onPress={() => {
                 if (name && selectedAvatar) {
-                  handleDeleteDatabase();
+                  if (isFirstPress) {
+                    handleDeleteDatabase();
+                    setIsFirstPress(false);
+                  }
                   setModalVisible(!modalVisible);
                 }
               }}
@@ -345,9 +350,9 @@ function HomeScreen({ navigation }) {
        paddingHorizontal: 20,
      },
      buttonRow: {
-        flexDirection: 'row', // Los alinea en paralelo
-        justifyContent: 'space-between', // Ajusta la separación
-        alignItems: 'center', // Centra verticalmente
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         marginBottom: 45,
         marginTop: 10,
      },
