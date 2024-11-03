@@ -264,7 +264,8 @@ function HomeScreen({ navigation }) {
             <Text></Text>
             <TextInput
               style={styles.input}
-              placeholder="Ingresa tu nombre"
+              placeholder="Nombre (20 Max)"
+              maxLength={20}
               onChangeText={(text) => setName(text)}
               value={name}
             />
