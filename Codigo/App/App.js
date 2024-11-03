@@ -255,7 +255,7 @@ function HomeScreen({ navigation }) {
                 <Image
                   style={[
                     styles.avatar,
-                    selectedAvatar === 'avatar1' && styles.selectedAvatar,
+                    selectedAvatar === 'avatar1' && {borderColor: selectedThemeColor, borderWidth: 3,},
                   ]}
                   source={require('./assets/1.jpeg')}
                 />
@@ -264,7 +264,7 @@ function HomeScreen({ navigation }) {
                 <Image
                   style={[
                     styles.avatar,
-                    selectedAvatar === 'avatar2' && styles.selectedAvatar,
+                    selectedAvatar === 'avatar2' && {borderColor: selectedThemeColor, borderWidth: 3,},
                   ]}
                   source={require('./assets/2.jpeg')}
                 />
@@ -273,7 +273,7 @@ function HomeScreen({ navigation }) {
                 <Image
                   style={[
                     styles.avatar,
-                    selectedAvatar === 'avatar3' && styles.selectedAvatar,
+                    selectedAvatar === 'avatar3' && {borderColor: selectedThemeColor, borderWidth: 3,},
                   ]}
                   source={require('./assets/3.png')}
                 />
@@ -290,6 +290,7 @@ function HomeScreen({ navigation }) {
             <TouchableOpacity
               style={[
                 styles.acceptButton,
+                { backgroundColor: selectedThemeColor },
                 (name === '' || selectedAvatar === null) && styles.disabledButton,
               ]}
               onPress={() => {
@@ -455,10 +456,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%',
     marginBottom: 20,
-  },
-  selectedAvatar: {
-    borderColor: '#007BFF',
-    borderWidth: 3,
   },
   input: {
     height: 40,
