@@ -15,6 +15,7 @@ import JuegosSinConexion from './JuegosSinConexion';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AlarmProvider, useAlarmContext } from './AlarmContext';
 import { Ionicons } from '@expo/vector-icons';
+import { Swipeable } from 'react-native-gesture-handler';
 
 
 const firebaseConfig = {
