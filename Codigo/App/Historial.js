@@ -72,7 +72,7 @@ export default function App() {
       </View>
 
       <Modal
-        animationType="slide"
+        animationType="fade"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}
@@ -138,6 +138,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 28,
     color: '#333',
+    maxWidth: '90%',
   },
   emptyText: {
     fontSize: 16,
