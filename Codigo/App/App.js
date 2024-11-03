@@ -14,6 +14,8 @@ import Memotest from './Memotest';
 import JuegosSinConexion from './JuegosSinConexion';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AlarmProvider, useAlarmContext } from './AlarmContext';
+import { Ionicons } from '@expo/vector-icons';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyBjdSByv2slcL-XFYQhdjs3hNEkjjTfmfw",
@@ -141,6 +143,15 @@ function HomeScreen({ navigation }) {
     setSelectedThemeColor(color);
   };
 
+  const tixiPutote = () => {
+    setModalVisible(true);
+  };
+
+  const ahoraJuliPutota = () => {
+    toggleMenu();
+    tixiPutote();
+  };
+
   return (
     <View style={styles.container}>
       {isMenuVisible && (
@@ -152,11 +163,16 @@ function HomeScreen({ navigation }) {
       )}
 
       <Animated.View style={[styles.sideBar, { left: menuAnimation }]}>
-        <TouchableOpacity style={styles.closeButton} onPress={toggleMenu}>
-          <View style={styles.menuLine} />
-          <View style={styles.menuLine} />
-          <View style={styles.menuLine} />
-        </TouchableOpacity>
+        <View style={styles.buttonRow}>
+          <TouchableOpacity style={styles.closeButton} onPress={toggleMenu}>
+            <View style={styles.menuLine} />
+            <View style={styles.menuLine} />
+            <View style={styles.menuLine} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.configButton} onPress={ahoraJuliPutota}>
+            <Ionicons name="cog-outline" size={32} color="black" />
+          </TouchableOpacity>
+        </View>
         <View style={styles.avatarContainer}>
           <Image
             style={styles.avatar}
@@ -224,7 +240,7 @@ function HomeScreen({ navigation }) {
         </TouchableOpacity>
       </View>
       <Modal
-        animationType="slide"
+        animationType="fade"
         transparent={true}
         visible={modalVisible}
       >
@@ -328,11 +344,18 @@ function HomeScreen({ navigation }) {
        zIndex: 1000,
        paddingHorizontal: 20,
      },
+     buttonRow: {
+        flexDirection: 'row', // Los alinea en paralelo
+        justifyContent: 'space-between', // Ajusta la separación
+        alignItems: 'center', // Centra verticalmente
+        marginBottom: 45,
+        marginTop: 10,
+     },
      closeButton: {
-       alignSelf: 'flex-end',
-       marginBottom: 45,
-       marginTop: 10,
-       marginRight: 'auto',
+        marginRight: 15,
+     },
+     configButton: {
+        marginLeft: 15,
      },
      avatarContainer: {
        alignItems: 'center',
