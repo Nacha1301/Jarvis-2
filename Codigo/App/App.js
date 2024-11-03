@@ -312,209 +312,209 @@ function HomeScreen({ navigation }) {
   );
 }
 
-   const styles = StyleSheet.create({
-     container: {
-       flex: 1,
-       backgroundColor: '#fff',
-     },
-     header: {
-       flexDirection: 'row',
-       justifyContent: 'space-between',
-       alignItems: 'center',
-       width: '100%',
-       paddingHorizontal: 20,
-       paddingTop: 50,
-     },
-     menuButton: {
-       justifyContent: 'center',
-       alignItems: 'center',
-     },
-     menuLine: {
-       width: 30,
-       height: 3,
-       backgroundColor: 'black',
-       marginVertical: 2,
-     },
-     image: {
-       width: 40,
-       height: 40,
-     },
-     sideBar: {
-       position: 'absolute',
-       top: 0,
-       bottom: 0,
-       width: 300,
-       backgroundColor: '#f0f0f0',
-       paddingTop: 50,
-       zIndex: 1000,
-       paddingHorizontal: 20,
-     },
-     buttonRow: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginBottom: 45,
-        marginTop: 10,
-     },
-     closeButton: {
-        marginRight: 15,
-     },
-     configButton: {
-        marginLeft: 15,
-     },
-     avatarContainer: {
-       alignItems: 'center',
-       marginBottom: 30,
-     },
-     avatar: {
-       width: 80,
-       height: 80,
-       borderRadius: 40,
-       borderWidth: 3,
-       marginBottom: 10,
-     },
-     userName: {
-       fontSize: 18,
-       fontWeight: 'bold',
-     },
-     themeLabel: {
-       fontSize: 16,
-       fontWeight: 'bold',
-     },
-     themeSection: {
-       marginTop: 'auto',
-       marginBottom: 60,
-     },
-     themesContainer: {
-       flexDirection: 'row',
-       justifyContent: 'space-around',
-       width: '100%',
-     },
-     themeCircle: {
-       width: 50,
-       height: 50,
-       borderRadius: 25,
-     },
-     content: {
-       flex: 1,
-       alignItems: 'center',
-       justifyContent: 'center',
-       paddingHorizontal: 20,
-     },
-     headerText: {
-       fontSize: 24,
-       fontWeight: 'bold',
-       marginBottom: 10,
-     },
-     subHeaderText: {
-       fontSize: 16,
-       marginBottom: 30,
-     },
-     button: {
-       backgroundColor: '#007BFF',
-       padding: 15,
-       borderRadius: 5,
-       width: '100%',
-       alignItems: 'center',
-       marginBottom: 10,
-     },
-     buttonText: {
-       color: 'white',
-       fontSize: 18,
-       fontWeight: 'bold',
-     },
-     centeredView: {
-       flex: 1,
-       justifyContent: 'center',
-       alignItems: 'center',
-       marginTop: 22,
-     },
-     modalView: {
-       margin: 20,
-       backgroundColor: 'white',
-       borderRadius: 20,
-       padding: 35,
-       alignItems: 'center',
-       shadowColor: '#000',
-       shadowOffset: {
-         width: 0,
-         height: 2,
-       },
-       shadowOpacity: 0.25,
-       shadowRadius: 4,
-       elevation: 5,
-     },
-     modalText: {
-       marginBottom: 15,
-       textAlign: 'center',
-       fontSize: 20,
-       fontWeight: 'bold',
-     },
-     avatarSelection: {
-       flexDirection: 'row',
-       justifyContent: 'space-between',
-       width: '100%',
-       marginBottom: 20,
-     },
-     selectedAvatar: {
-       borderColor: '#007BFF',
-       borderWidth: 3,
-     },
-     input: {
-       height: 40,
-       borderColor: '#000',
-       borderWidth: 1,
-       borderRadius: 5,
-       marginBottom: 15,
-       paddingHorizontal: 10,
-       width: '80%',
-     },
-     acceptButton: {
-       backgroundColor: '#007BFF',
-       padding: 10,
-       borderRadius: 5,
-     },
-     textStyle: {
-       color: 'white',
-       fontWeight: 'bold',
-       textAlign: 'center',
-     },
-      headerRightContainer: {
-       paddingRight: 15,
-     },
-       avatar2: {
-       width: 40,
-       height: 40,
-     },
-     overlay: {
-       position: 'absolute',
-       top: 0,
-       bottom: 0,
-       left: 0,
-       right: 0,
-       backgroundColor: 'rgba(0, 0, 0, 0.5)',
-       zIndex: 999,
-     },
-      manualContainer: {
-        flex: 1,
-        alignItems: 'center',
-        marginTop: 'center',
-        justifyContent: 'center',
-     },
-      manualDeUsuario: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        marginBottom: 10,
-     },
-      qrImage: {
-        width: 200,
-        height: 200,
-        alignSelf: 'center',
-     },
-     disabledButton: {
-       backgroundColor: '#cccccc',
-     },
-   });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    paddingHorizontal: 20,
+    paddingTop: 50,
+  },
+  menuButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  menuLine: {
+    width: 30,
+    height: 3,
+    backgroundColor: 'black',
+    marginVertical: 2,
+  },
+  image: {
+    width: 40,
+    height: 40,
+  },
+  sideBar: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    width: 300,
+    backgroundColor: '#f0f0f0',
+    paddingTop: 50,
+    zIndex: 1000,
+    paddingHorizontal: 20,
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 45,
+    marginTop: 10,
+  },
+  closeButton: {
+    marginRight: 15,
+  },
+  configButton: {
+    marginLeft: 15,
+  },
+  avatarContainer: {
+    alignItems: 'center',
+    marginBottom: 30,
+  },
+  avatar: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    borderWidth: 3,
+    marginBottom: 10,
+  },
+  userName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  themeLabel: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  themeSection: {
+    marginTop: 'auto',
+    marginBottom: 60,
+  },
+  themesContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+  },
+  themeCircle: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+  },
+  content: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+  },
+  headerText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  subHeaderText: {
+    fontSize: 16,
+    marginBottom: 30,
+  },
+  button: {
+    backgroundColor: '#007BFF',
+    padding: 15,
+    borderRadius: 5,
+    width: '100%',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  avatarSelection: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginBottom: 20,
+  },
+  selectedAvatar: {
+    borderColor: '#007BFF',
+    borderWidth: 3,
+  },
+  input: {
+    height: 40,
+    borderColor: '#000',
+    borderWidth: 1,
+    borderRadius: 5,
+    marginBottom: 15,
+    paddingHorizontal: 10,
+    width: '80%',
+  },
+  acceptButton: {
+    backgroundColor: '#007BFF',
+    padding: 10,
+    borderRadius: 5,
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  headerRightContainer: {
+    paddingRight: 15,
+  },
+    avatar2: {
+    width: 40,
+    height: 40,
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    zIndex: 999,
+  },
+  manualContainer: {
+    flex: 1,
+    alignItems: 'center',
+    marginTop: 'center',
+    justifyContent: 'center',
+  },
+  manualDeUsuario: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  qrImage: {
+    width: 200,
+    height: 200,
+    alignSelf: 'center',
+  },
+  disabledButton: {
+    backgroundColor: '#cccccc',
+  },
+});
 
 const Stack = createStackNavigator();
 
