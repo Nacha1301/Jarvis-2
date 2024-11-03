@@ -2,6 +2,8 @@
   "dependencies": {
     "axios": "*",
     "firebase": "^8.10.0",
+    "expo-asset": "~10.0.10",
+    "expo-sharing": "~12.0.1",
     "expo-constants": "~16.0.2",
     "expo-status-bar": "~1.12.1",
     "expo-file-system": "~17.0.1",
@@ -24,8 +26,6 @@
     "@fortawesome/react-native-fontawesome": "*",
     "react-native-vector-icons/FontAwesome": "*",
     "@react-native-async-storage/async-storage": "1.23.1",
-    "react-native-vector-icons/MaterialCommunityIcons": "*",
-    "expo-asset": "~10.0.10",
-    "expo-sharing": "~12.0.1"
+    "react-native-vector-icons/MaterialCommunityIcons": "*"
   }
 }
