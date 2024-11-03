@@ -383,7 +383,7 @@ function HomeScreen({ navigation }) {
      },
      themeSection: {
        marginTop: 'auto',
-       marginBottom: 100,
+       marginBottom: 60,
      },
      themesContainer: {
        flexDirection: 'row',
