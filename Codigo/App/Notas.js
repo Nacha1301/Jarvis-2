@@ -161,7 +161,7 @@ export default function App() {
               <View style={styles.buttonSpacing}>
                 <Button title="Cancelar" color="red" onPress={closeAddNoteModal} />
               </View>
-              <View style={styles.buttonSpacing}>
+              <View style={styles.buttonSpacing2}>
                 <Button title="Guardar" onPress={addNote} />
               </View>
             </View>
@@ -199,7 +199,7 @@ export default function App() {
               <View style={styles.buttonSpacing}>
                 <Button title="Cancelar" color="red" onPress={() => setEditModalVisible(false)} />
               </View>
-              <View style={styles.buttonSpacing}>
+              <View style={styles.buttonSpacing2}>
                 <Button title="Guardar" onPress={editNote} />
               </View>
             </View>
@@ -220,7 +220,7 @@ export default function App() {
               <View style={styles.buttonSpacing}>
                 <Button title="Cancelar" color="red" onPress={() => setModalMenuVisible(false)} />
               </View>
-              <View style={styles.buttonSpacing}>
+              <View style={styles.buttonSpacing2}>
                 <Button title="Aceptar" onPress={deleteAllNotes} />
               </View>
             </View>
@@ -321,6 +321,11 @@ const styles = StyleSheet.create({
   },
   buttonSpacing: {
     marginHorizontal: 5,
+    marginLeft: '50%',
+  },
+  buttonSpacing2: {
+    marginHorizontal: 5,
+    marginRight: '50%',
   },
   trashIcon: {
     position: 'absolute',
