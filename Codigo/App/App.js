@@ -15,7 +15,6 @@ import JuegosSinConexion from './JuegosSinConexion';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AlarmProvider, useAlarmContext } from './AlarmContext';
 import { Ionicons } from '@expo/vector-icons';
-import { Swipeable } from 'react-native-gesture-handler';
 
 
 const firebaseConfig = {
@@ -178,7 +177,9 @@ function HomeScreen({ navigation }) {
         </View>
         <View style={styles.avatarContainer}>
           <Image
-            style={styles.avatar}
+            style={[
+              styles.avatar,
+              { borderColor: selectedThemeColor, borderWidth: 3 }]}
             source={selectedAvatar ? avatarSources[selectedAvatar] : require('./assets/logo.jpg')}
           />
           <Text></Text>
@@ -256,25 +257,36 @@ function HomeScreen({ navigation }) {
                 <Image
                   style={[
                     styles.avatar,
-                    selectedAvatar === 'avatar1' && {borderColor: selectedThemeColor, borderWidth: 3,},
+                    {
+                      borderColor: selectedAvatar === 'avatar1' ? selectedThemeColor : '#D3D3D3',
+                      borderWidth: 3,
+                    },
                   ]}
                   source={require('./assets/1.jpeg')}
                 />
               </TouchableOpacity>
+
               <TouchableOpacity onPress={() => setSelectedAvatar('avatar2')}>
                 <Image
                   style={[
                     styles.avatar,
-                    selectedAvatar === 'avatar2' && {borderColor: selectedThemeColor, borderWidth: 3,},
+                    {
+                      borderColor: selectedAvatar === 'avatar2' ? selectedThemeColor : '#D3D3D3',
+                      borderWidth: 3,
+                    },
                   ]}
                   source={require('./assets/2.jpeg')}
                 />
               </TouchableOpacity>
+
               <TouchableOpacity onPress={() => setSelectedAvatar('avatar3')}>
                 <Image
                   style={[
                     styles.avatar,
-                    selectedAvatar === 'avatar3' && {borderColor: selectedThemeColor, borderWidth: 3,},
+                    {
+                      borderColor: selectedAvatar === 'avatar3' ? selectedThemeColor : '#D3D3D3',
+                      borderWidth: 3,
+                    },
                   ]}
                   source={require('./assets/3.png')}
                 />
